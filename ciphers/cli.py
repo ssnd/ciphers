@@ -13,13 +13,13 @@ def cli(): pass
 @cli.command()
 @click.option("-c", "--cipher",
               required=True,
-              type=click.Choice(['caesar', 'vigenere', 'vernam']),
-              help="Cipher type: Caesar, Vigenere or Vernam")
+              type=click.Choice(['caesar', 'vigenere', 'vernam']),  
+              help="Cipher type: Caesar, Vigenere or Vernam")  
 @click.option("-k", "--key",
               type=click.STRING,
               required=True,
-              help="The key: integer for Caesar, string for" +
-                   "Cigenere and Vernam.")
+              help="The key: integer for Caesar, string for " +
+                   "Vigenere and Vernam.")
 @click.option("--input-file",
               default=None,
               type=click.File(),
@@ -29,7 +29,9 @@ def cli(): pass
               type=click.File("w"),
               help="Output file to write the text to.")
 def encode(cipher: str, key: Union[int, str], input_file, output_file):
-    """encode docstring
+    """Use this command to encode the text (read from stdio or a file) 
+       using the available ciphers and display the encrypted text or write 
+       it to a file.
     """
 
     io_handler = IOHandler(input_file, output_file)
@@ -56,12 +58,12 @@ def encode(cipher: str, key: Union[int, str], input_file, output_file):
 @click.option("-c", "--cipher",
               required=True,
               type=click.Choice(['caesar', 'vigenere', 'vernam']),
-              help="Cipher type: Caesar, vigenere or Vernam")
+              help="Cipher type: Caesar, Vigenere or Vernam")
 @click.option("-k", "--key",
               type=click.STRING,
               required=True,
-              help="The key: integer for Caesar, string for" +
-                   "Cigenere and Vernam.")
+              help="The key: integer for Caesar, string for " +
+                   "Vigenere and Vernam.")
 @click.option("--input-file",
               default=None,
               type=click.File(),
@@ -71,7 +73,9 @@ def encode(cipher: str, key: Union[int, str], input_file, output_file):
               type=click.File("w"),
               help="Output file to write the text to.")
 def decode(cipher: str, key: Union[int, str], input_file, output_file):
-    """decode docstring
+    """Use this command to decode the text (read from stdio or a file) 
+       using the available ciphers and display the encrypted text or write 
+       it to a file.
     """
 
     io_handler = IOHandler(input_file, output_file)
