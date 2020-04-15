@@ -7,9 +7,10 @@ class Cipher:
     """Abstract Cipher class to be used to define different kinds of ciphers.
     """
     key: Union[str, int]
-    alphabet: str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJK\
-LMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМН\
-ОПРСТУФХЦЧШЩЪЫЬЭЮЯ1234567890!\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~ "
+    alphabet: str = ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                     "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+                     "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
+                     "1234567890!\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~ ")
 
     def encrypt(self, text: str) -> str:
         pass

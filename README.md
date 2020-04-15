@@ -7,7 +7,7 @@ Run the **build.sh** script to build the project. It will create the virtual env
 `./build.sh`
 
 ## Usage
-`encryptor.py help` - to display the help message.
+`./encryptor.py --help` - to display the help message.
 
 ### Encode
 Use this command to encode the text (read from stdio or a file) using the available ciphers and display the encrypted text or write it to a file.

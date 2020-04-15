@@ -17,9 +17,12 @@ class Vigenere(Cipher):
         """
         alph = self.alphabet
         key = self.prep_key(text)
-        print(text, key)
         encrypted_string = ""
         for index, char in enumerate(text):
+            if char not in self.alphabet:
+                encrypted_string += char
+                continue
+
             new_index = (alph.index(char) + alph.index(key[index])) % len(alph)
             encrypted_string += alph[new_index]
 
@@ -38,6 +41,10 @@ class Vigenere(Cipher):
         key = self.prep_key(text)
         decrypted_string = ""
         for index, char in enumerate(text):
+            if char not in self.alphabet:
+                decrypted_string += char
+                continue
+
             new_index = (alph.index(char) - alph.index(key[index])) % len(alph)
             decrypted_string += alph[new_index]
 

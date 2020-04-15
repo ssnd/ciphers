@@ -18,6 +18,7 @@ class Caesar(Cipher):
         for index, char in enumerate(text):
             if char not in self.alphabet:
                 encrypted_string += char
+                continue
 
             index = (self.alphabet.index(char) + self.key) % len(self.alphabet)
             encrypted_string += self.alphabet[index]
@@ -37,6 +38,7 @@ class Caesar(Cipher):
         for index, char in enumerate(text):
             if char not in self.alphabet:
                 decrypted_string += char
+                continue
 
             index = (self.alphabet.index(char) - self.key) % len(self.alphabet)
             decrypted_string += self.alphabet[index]
