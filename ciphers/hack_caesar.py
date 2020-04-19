@@ -1,7 +1,8 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from ciphers.models.letter_frequency_model import LetterFrequencyModel
 from ciphers.caesar import Caesar
 from typing import Union, Dict
+import sys
 
 
 @dataclass
@@ -9,46 +10,47 @@ class HackCaesar():
     """Use letter frequencies to hack the cipher
     """
     model: Union[Dict, None] = None
-    model_instance = LetterFrequencyModel()
+    model_instance: LetterFrequencyModel =\
+        field(default_factory=LetterFrequencyModel)
 
     def get_model(self, path: str):
         """Load the model.
-        
+
         Arguments:
             path {str} -- the path to the model file
         """
         self.model = self.model_instance.get_trained_model(file_path=path)
 
     def check_input_data(self, encrypted: str) -> bool:
-        """Run the checks to be sure that this model fits 
+        """Run the checks to be sure that this model fits
         the provided data. This method tests the input text length.
-        
+
         Arguments:
             encrypted {str} -- encrypted text
-        
+
         Returns:
-            bool -- whether or not the text should be analyzed using this method.
+            bool -- whether the text should be analyzed using this method.
         """
         if len(encrypted) < 10:
             print("The input text is too short. Exitting...")
-            return False
+            sys.exit()
 
         return True
 
     def hack(self, encrypted: str) -> Union[str, None]:
-        """Guess the key by finding the one with the minimal 
+        """Guess the key by finding the one with the minimal
         MSE wrt to the letter frequencies in the model.
-        
+
         Arguments:
             encrypted {str} -- encrypted text
-        
+
         Returns:
-            Union[str, None] -- Decrypted text, or None if the decryption 
+            Union[str, None] -- Decrypted text, or None if the decryption
             is impossible for some reason.
         """
         if self.model is None:
             print("No model provided. Exitting...")
-            return None
+            sys.exit()
 
         if not self.check_input_data(encrypted):
             return None
@@ -74,11 +76,11 @@ class HackCaesar():
     @staticmethod
     def mse(x: float, y: float) -> float:
         """Mean squared error
-        
+
         Arguments:
             x {float} -- x
             y {float} -- y
-        
+
         Returns:
             float -- result
         """

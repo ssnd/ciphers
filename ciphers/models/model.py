@@ -12,8 +12,9 @@ class Model(abc.ABC):
     model: Union[object, None] = None
 
     def train_model(self,
-                    output_file_path: Union[str, None] = None,
-                    input_file_path: Union[str, None] = None) -> Dict:
+                    output_file_path: Union[str, None],
+                    input_file_path: Union[str, None] = None) \
+            -> Dict[str, float]:
         """Train the model
 
         Keyword Arguments:

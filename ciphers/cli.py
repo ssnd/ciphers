@@ -5,6 +5,7 @@ from ciphers.vernam import Vernam
 from ciphers.io_handler import IOHandler
 from ciphers.hack_caesar import HackCaesar
 from typing import Union
+import sys
 
 
 @click.group()
@@ -34,8 +35,8 @@ def encode(cipher: str, key: Union[int, str], input_file, output_file):
        using the available ciphers and display the encrypted text or write
        it to a file.
     """
-    input_path = input_file.filepath if input_file is not None else None
-    output_path = output_file.filepath if output_file is not None else None
+    input_path = input_file.name if input_file is not None else None
+    output_path = output_file.name if output_file is not None else None
 
     io_handler = IOHandler(input_path, output_path)
 
@@ -51,6 +52,10 @@ def encode(cipher: str, key: Union[int, str], input_file, output_file):
         encrypted_str = vigenere.encrypt(input_text)
 
     if cipher == "vernam":
+        if output_file is None:
+            print(("An output file is required for the Vernam cipher"
+                   " to work correctly. Exitting..."))
+            sys.exit()
         vernam = Vernam(key=key)
         encrypted_str = vernam.encrypt(input_text)
 
@@ -98,6 +103,10 @@ def decode(cipher: str, key: Union[int, str], input_file, output_file):
         decrypted_str = v.decrypt(input_text)
 
     if cipher == "vernam":
+        if input_file is None:
+            print(("An input file is required for the Vernam cipher"
+                   " to work correctly. Exitting..."))
+            sys.exit()
         vernam = Vernam(key=key)
         decrypted_str = vernam.decrypt(input_text)
 

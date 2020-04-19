@@ -45,10 +45,10 @@ class IOHandler:
 
     def write(self, text: str, display_text: str = "Output text: ") -> None:
         """Stdout or read from the file.
-        
+
         Arguments:
             text {str} -- the text to use
-        
+
         Keyword Arguments:
             display_text {str} -- Text to display before the provided text
             (default: {"Output text: "})
@@ -60,7 +60,7 @@ class IOHandler:
 
     def echo(self, text: str) -> None:
         """Stdout the given text
-        
+
         Arguments:
             text {str} -- the text to display
         """
@@ -68,7 +68,7 @@ class IOHandler:
 
     def write_file(self, text: str) -> None:
         """Write to the file.
-        
+
         Arguments:
             text {str} -- the output text.
         """
