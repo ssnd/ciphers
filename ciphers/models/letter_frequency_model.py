@@ -21,7 +21,7 @@ class LetterFrequencyModel(Model):
         """
         alphabet = list(set(self.alphabet))
 
-        if (len(text) == 0):
+        if len(text) == 0:
             print("The input text is empty. Exitting...")
             sys.exit()
 

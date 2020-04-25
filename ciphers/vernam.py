@@ -31,8 +31,3 @@ class Vernam(Cipher):
             decrypted_string += chr(xored_char)
 
         return decrypted_string
-
-
-# if __name__ == "__main__":
-#     v = Vernam(key="abc")
-#     print(v.decrypt(v.encrypt("hello")))
