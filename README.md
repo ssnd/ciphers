@@ -42,5 +42,3 @@ Options:<br />
 ## Run the tests
 `pytest`
 
-
-
